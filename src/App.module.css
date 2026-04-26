@@ -1,0 +1,41 @@
+.app {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+@media (min-width: 768px) {
+  .app {
+    padding: 3rem 2rem 4rem;
+  }
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  margin: 0 0 0.25rem;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.status {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.error {
+  font-size: 0.875rem;
+  color: #f87171;
+}
