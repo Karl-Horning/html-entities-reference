@@ -39,12 +39,42 @@
   line-height: 1.6;
 }
 
+.codeButton {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0 3px;
+  margin: 0 -3px;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: color 120ms ease, background-color 120ms ease;
+}
+
+.codeButton:hover {
+  background-color: var(--color-border);
+}
+
+.codeButton:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
 .codeName {
   color: var(--color-code-name);
 }
 
 .codeNumeric {
   color: var(--color-code-numeric);
+}
+
+.copied {
+  color: var(--color-code-name);
+  opacity: 0.6;
 }
 
 .description {
