@@ -2,12 +2,17 @@
  * @fileoverview Site-wide configuration used across metadata and the PWA manifest.
  */
 
+/** Base path for the deployment, used as Vite's `base` and the PWA scope/start_url. */
+export const SITE_BASE = "/html-entities-reference/";
+
 /** Canonical base URL for the deployed site, including the trailing slash. */
-export const SITE_URL =
-  "https://www.karlhorning.dev/html-entities-reference/";
+export const SITE_URL = `https://www.karlhorning.dev${SITE_BASE}`;
 
 /** Page title. */
 export const SITE_TITLE = "HTML Entities Reference";
+
+/** Short name used in the PWA manifest and home screen label (max ~12 chars). */
+export const SITE_SHORT_NAME = "HTML Entities";
 
 /** Page description used in meta tags and the PWA manifest. */
 export const SITE_DESCRIPTION =
