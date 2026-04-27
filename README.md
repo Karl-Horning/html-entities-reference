@@ -12,6 +12,7 @@ A searchable reference for HTML named character references.
 - **Tailwind CSS v4**
 - **CSS Modules**
 - **Vitest** + **React Testing Library** + **jest-axe**
+- **vite-plugin-pwa** — service worker and web app manifest
 - Deployed to **GitHub Pages** via GitHub Actions
 
 ## Notable decisions
@@ -24,7 +25,9 @@ A searchable reference for HTML named character references.
 
 **Browser zoom** — All sizing uses `rem` throughout, so browser zoom (⌘+ / Ctrl++) scales the entire layout proportionally — including the entity glyphs — without any JavaScript or media queries.
 
-**Testing strategy** — Each concern is tested in isolation. Pure utilities use plain unit tests. Hooks use `renderHook` with fake timers where timing matters. Components use `vi.mock` to replace browser APIs that jsdom does not implement (Clipboard API), keeping tests deterministic. Accessibility is automated with jest-axe on every interactive component.
+**Config as the single source of truth** — Site metadata (title, description, URL, theme colour) is defined once in `src/config.ts`. A Vite `transformIndexHtml` plugin substitutes tokens such as `%SITE_TITLE%` into `index.html` at build time, so the PWA manifest, Open Graph tags, and any React components that reference the same constants stay in sync automatically.
+
+**Testing strategy** — Each concern is tested in isolation. Pure utilities use plain unit tests. Hooks use `renderHook` with fake timers where timing matters. Components use `vi.mock` to replace browser APIs that jsdom does not implement (Clipboard API), keeping tests deterministic. Accessibility is verified with jest-axe on every component.
 
 **CSS** — CSS Modules for component styles; design tokens defined as CSS custom properties in `index.css` for consistent theming across the app.
 
