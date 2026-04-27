@@ -1,10 +1,19 @@
+import { useState, useMemo } from "react";
 import { useEntities } from "./hooks/useEntities";
+import { filterEntities } from "./utils/filterEntities";
+import { SearchInput } from "./components/SearchInput/SearchInput";
 import { EntityGrid } from "./components/EntityGrid/EntityGrid";
 import styles from "./App.module.css";
 
 /** Root application component. */
 function App() {
   const { entities, loading, error } = useEntities();
+  const [query, setQuery] = useState("");
+
+  const filteredEntities = useMemo(
+    () => filterEntities(entities, query),
+    [entities, query]
+  );
 
   return (
     <div className={styles.app}>
@@ -27,7 +36,17 @@ function App() {
             {error}
           </p>
         )}
-        {!loading && !error && <EntityGrid entities={entities} query="" />}
+        {!loading && !error && (
+          <>
+            <SearchInput
+              value={query}
+              onChange={setQuery}
+              resultCount={filteredEntities.length}
+              totalCount={entities.length}
+            />
+            <EntityGrid entities={filteredEntities} query={query} />
+          </>
+        )}
       </main>
     </div>
   );
