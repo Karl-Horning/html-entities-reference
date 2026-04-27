@@ -22,7 +22,14 @@ export const SITE_DESCRIPTION =
 export const AUTHOR_NAME = "Karl Horning";
 
 /** Canonical author URL. */
-export const AUTHOR_URL = "https://github.com/Karl-Horning";
+export const AUTHOR_URL = "https://www.karlhorning.dev";
+
+/** Source code repository URL. */
+export const REPO_URL =
+  "https://github.com/Karl-Horning/html-entities-reference";
+
+/** Year the project was first published, used for the copyright range. */
+export const SITE_START_YEAR = 2025;
 
 /** Brand colour used in the PWA manifest and theme-color meta tag. */
 export const THEME_COLOR = "#0d0d0d";
