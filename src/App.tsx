@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { useEntities } from "./hooks/useEntities";
 import { filterEntities } from "./utils/filterEntities";
+import { Footer } from "./components/Footer/Footer";
 import { SearchInput } from "./components/SearchInput/SearchInput";
 import { StatsPanel } from "./components/StatsPanel/StatsPanel";
 import { EntityGrid } from "./components/EntityGrid/EntityGrid";
@@ -41,7 +42,7 @@ function App() {
           {!loading && !error && <StatsPanel entities={entities} />}
         </aside>
       </div>
-      <main>
+      <main className={styles.main}>
         {loading && (
           <p className={styles.status} aria-live="polite">
             Loading…
@@ -56,6 +57,7 @@ function App() {
           <EntityGrid entities={filteredEntities} query={query} />
         )}
       </main>
+      <Footer />
     </div>
   );
 }

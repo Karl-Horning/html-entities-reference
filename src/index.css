@@ -35,6 +35,15 @@ body {
   color: var(--color-text-primary);
   font-family: var(--font-sans);
   margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
