@@ -10,8 +10,37 @@
   }
 }
 
-.header {
+.top {
   margin-bottom: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .top {
+    display: flex;
+    align-items: flex-start;
+    gap: 2.5rem;
+  }
+}
+
+.topMain {
+  flex: 1;
+  min-width: 0;
+}
+
+.topAside {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .topAside {
+    display: block;
+    flex-shrink: 0;
+    width: 16rem;
+  }
+}
+
+.header {
+  margin-bottom: 1.5rem;
 }
 
 .title {
