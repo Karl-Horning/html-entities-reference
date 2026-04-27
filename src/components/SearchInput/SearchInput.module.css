@@ -32,7 +32,6 @@
 
 .input {
   width: 100%;
-  max-width: 32rem;
   background-color: var(--color-canvas);
   border: 1px solid var(--color-border);
   border-radius: 6px;
@@ -50,6 +49,12 @@
 
 .input:focus {
   border-color: var(--color-accent);
+}
+
+@media (min-width: 1024px) {
+  .input {
+    max-width: 32rem;
+  }
 }
 
 .status {
