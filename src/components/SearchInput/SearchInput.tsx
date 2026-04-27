@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import styles from "./SearchInput.module.css";
 
 interface SearchInputProps {
@@ -14,6 +15,7 @@ interface SearchInputProps {
 /**
  * A labeled search input for filtering the entity grid.
  *
+ * Supports ⌘K / Ctrl+K to focus the input from anywhere on the page.
  * Uses a `role="search"` landmark and an `aria-live` region so screen
  * readers announce the result count as the query changes.
  */
@@ -23,7 +25,19 @@ export function SearchInput({
   resultCount,
   totalCount,
 }: SearchInputProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
   const isFiltered = value.trim().length > 0;
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        inputRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
   const statusText = isFiltered
     ? `${resultCount.toLocaleString()} of ${totalCount.toLocaleString()} ${resultCount === 1 ? "result" : "results"}`
     : "";
@@ -56,6 +70,7 @@ export function SearchInput({
             />
           </svg>
           <input
+            ref={inputRef}
             id="entity-search"
             type="search"
             className={styles.input}
@@ -65,6 +80,7 @@ export function SearchInput({
             autoComplete="off"
             spellCheck={false}
           />
+          <kbd className={styles.shortcut} aria-hidden="true">⌘K</kbd>
         </div>
       </div>
       <p
