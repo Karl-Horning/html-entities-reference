@@ -63,6 +63,24 @@ describe("SearchInput", () => {
     expect(screen.getByText(/1 of 100 result\b/i)).toBeInTheDocument();
   });
 
+  it("focuses the input when ⌘K is pressed", async () => {
+    const user = userEvent.setup();
+    render(
+      <SearchInput value="" onChange={noop} resultCount={0} totalCount={100} />
+    );
+    await user.keyboard("{Meta>}k{/Meta}");
+    expect(screen.getByRole("searchbox")).toHaveFocus();
+  });
+
+  it("focuses the input when Ctrl+K is pressed", async () => {
+    const user = userEvent.setup();
+    render(
+      <SearchInput value="" onChange={noop} resultCount={0} totalCount={100} />
+    );
+    await user.keyboard("{Control>}k{/Control}");
+    expect(screen.getByRole("searchbox")).toHaveFocus();
+  });
+
   it("has no accessibility violations", async () => {
     const { container } = render(
       <SearchInput value="" onChange={noop} resultCount={0} totalCount={100} />
