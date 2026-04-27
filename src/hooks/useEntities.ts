@@ -22,7 +22,7 @@ export function useEntities(): UseEntitiesResult {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("/data/html_entities.json")
+    fetch(`${import.meta.env.BASE_URL}data/html_entities.json`)
       .then((res) => {
         if (!res.ok) throw new Error(`Failed to fetch entities: ${res.status}`);
         return res.json() as Promise<EntityData>;
